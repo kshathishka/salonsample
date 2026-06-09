@@ -19,16 +19,15 @@
     }
 
     :root {
-      /* IMPROVED CONTRAST - deeper, richer tones while maintaining elegance */
-      --primary-deep: #C75C3A;      /* deeper terracotta for better readability */
-      --primary-vibrant: #D96B46;   /* vibrant accent for buttons */
-      --primary-soft: #E8926E;      /* softer version for hover states */
-      --primary-light: #FCE9E1;     /* ultra light background tone */
-      --cream-bg: #FFF9F5;          /* warm cream background */
-      --text-dark: #2C2826;         /* deep charcoal - excellent contrast */
-      --text-muted: #5E554F;        /* warm dark gray - accessible */
-      --taupe-border: #DFD3CA;      /* subtle borders with good definition */
-      --teal-accent: #2A7F6E;       /* teal for price tags - high contrast */
+      --primary-deep: #C75C3A;
+      --primary-vibrant: #D96B46;
+      --primary-soft: #E8926E;
+      --primary-light: #FCE9E1;
+      --cream-bg: #FFF9F5;
+      --text-dark: #2C2826;
+      --text-muted: #5E554F;
+      --taupe-border: #DFD3CA;
+      --teal-accent: #2A7F6E;
       --white-pure: #FFFFFF;
       --shadow-sm: 0 10px 25px -12px rgba(0, 0, 0, 0.08);
       --shadow-md: 0 20px 35px -12px rgba(0, 0, 0, 0.12);
@@ -45,7 +44,6 @@
 
     html { scroll-behavior: smooth; }
 
-    /* ========== LOADER ========== */
     .loader {
       position: fixed;
       top: 0;
@@ -69,7 +67,6 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ========== TYPOGRAPHY ========== */
     h1, h2, h3, .serif {
       font-family: 'Playfair Display', serif;
       font-weight: 600;
@@ -99,7 +96,6 @@
       line-height: 1.65;
     }
 
-    /* ========== NAVIGATION ========== */
     .nav {
       padding: 1.2rem 3rem;
       display: flex;
@@ -171,7 +167,6 @@
       box-shadow: 0 8px 20px rgba(199, 92, 58, 0.3);
     }
 
-    /* ========== HERO SECTION ========== */
     .hero {
       min-height: 90vh;
       display: flex;
@@ -279,7 +274,6 @@
       font-weight: 500;
     }
 
-    /* ========== SECTION STYLES ========== */
     .section {
       padding: 6rem 3rem;
     }
@@ -292,7 +286,6 @@
       margin: 0 auto 3.5rem;
     }
 
-    /* Services Cards */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -338,7 +331,6 @@
       line-height: 1.65;
     }
 
-    /* Booking Widget */
     .booking-card {
       background: var(--white-pure);
       border-radius: 48px;
@@ -446,7 +438,6 @@
       transform: translateY(-2px);
     }
 
-    /* Team Carousel */
     .team-swiper {
       padding: 1rem 0.5rem;
     }
@@ -495,7 +486,6 @@
       font-weight: 600;
     }
 
-    /* Gallery */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -522,7 +512,6 @@
       opacity: 0.7;
     }
 
-    /* Testimonials */
     .testimonial-slide {
       background: var(--white-pure);
       border-radius: 36px;
@@ -549,7 +538,6 @@
       color: var(--primary-deep);
     }
 
-    /* Contact strip */
     .contact-strip {
       background: var(--white-pure);
       border-radius: 56px;
@@ -574,7 +562,6 @@
       color: var(--primary-deep);
     }
 
-    /* Footer */
     .footer {
       background: #1E1B19;
       padding: 2.5rem 3rem;
@@ -627,7 +614,6 @@
     <button class="nav-cta" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Book Now</button>
   </nav>
 
-  <!-- Hero Section -->
   <section class="hero">
     <div class="hero-bg-shape"></div>
     <div class="hero-content">
@@ -636,7 +622,7 @@
       <p class="hero-sub">A luxurious unisex salon experience for every member — precision cuts, bridal transformations, and rejuvenating treatments in a warm, welcoming space.</p>
       <div class="hero-buttons">
         <button class="btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Secure Your Slot</button>
-        <button class="btn-outline" onclick="sendPrompt('Explore services')">Explore Services</button>
+        <button class="btn-outline" onclick="sendPrompt('Explore our luxury services')">Explore Services</button>
       </div>
       <div class="hero-stats">
         <div><div class="stat-number">500+</div><div class="stat-label">Happy Families</div></div>
@@ -647,7 +633,6 @@
     </div>
   </section>
 
-  <!-- Services Section -->
   <section id="services" class="section">
     <div class="section-header">
       <div class="section-label">What We Offer</div>
@@ -664,7 +649,6 @@
     </div>
   </section>
 
-  <!-- Booking Section -->
   <section id="booking" class="section section-alt">
     <div class="section-header">
       <div class="section-label">Reserve Your Slot</div>
@@ -692,7 +676,6 @@
     </div>
   </section>
 
-  <!-- Team Section -->
   <section id="team" class="section">
     <div class="section-header"><div class="section-label">Meet the Experts</div><h2 class="section-title">Our Skilled Professionals</h2><p class="section-sub">Trained, certified, and passionate about making you look your absolute best.</p></div>
     <div class="swiper team-swiper">
@@ -706,7 +689,6 @@
     </div>
   </section>
 
-  <!-- Gallery Section -->
   <section id="gallery" class="section section-alt">
     <div class="section-header"><div class="section-label">Our Studio</div><h2 class="section-title">Signature Moments</h2><p class="section-sub">Experience the artistry and elegance that defines SDR Studio.</p></div>
     <div class="gallery-grid">
@@ -717,7 +699,6 @@
     </div>
   </section>
 
-  <!-- Testimonials -->
   <section class="section">
     <div class="section-header"><div class="section-label">Client Love</div><h2 class="section-title">What Our Guests Say</h2></div>
     <div class="swiper testimonial-swiper">
@@ -747,35 +728,142 @@
 </div>
 
 <script>
-  window.addEventListener('load', () => { document.getElementById('loader')?.remove(); });
-  
+(function() {
+  // ----- Helper functions -----
+  function hideLoader() {
+    const loader = document.getElementById('loader');
+    if (loader) loader.style.display = 'none';
+  }
+
+  function initSwiper() {
+    if (typeof Swiper === 'undefined') return;
+    try {
+      new Swiper('.team-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 24,
+        breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
+        pagination: { el: '.swiper-pagination', clickable: true }
+      });
+      new Swiper('.testimonial-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        pagination: { el: '.swiper-pagination', clickable: true }
+      });
+    } catch(e) { console.warn('Swiper init error', e); }
+  }
+
+  window.sendPrompt = function(msg) {
+    alert('✨ ' + msg + '\n\nCall us at +91 98765 XXXXX or book online!');
+  };
+
+  // ----- Time slots -----
   const times = ['9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM'];
   let selectedTime = '';
-  const slotsContainer = document.getElementById('timeSlotsContainer');
+
   function renderTimeSlots() {
-    if(!slotsContainer) return;
-    slotsContainer.innerHTML = '';
+    const container = document.getElementById('timeSlotsContainer');
+    if (!container) return;
+    container.innerHTML = '';
     times.forEach(t => {
       const btn = document.createElement('button');
       btn.textContent = t;
-      btn.classList.add('slot-btn');
-      btn.onclick = () => {
+      btn.className = 'slot-btn';
+      btn.addEventListener('click', () => {
         document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('selected'));
         btn.classList.add('selected');
         selectedTime = t;
-      };
-      slotsContainer.appendChild(btn);
+      });
+      container.appendChild(btn);
     });
   }
-  renderTimeSlots();
 
-  let currentStep = 1;
-  function nextStep(step) {
-    if(step === 2 && !selectedTime && document.getElementById('bookingDate').value === '') { alert('Please select a date and time slot'); return; }
-    if(step === 2 && !document.getElementById('clientName').value) { alert('Please enter your name'); return; }
-    document.getElementById('step1').classList.remove('active-step');
-    document.getElementById('step2').classList.remove('active-step');
-    document.getElementById('step3').classList.remove('active-step');
-    document.getElementById(`step${step}`).classList.add('active-step');
-    ['step1Label','step2Label','step3Label'].forEach((id,idx) => { document.getElementById(id).classList.remove('active'); });
-    document.getElementById(`step
+  // ----- Booking step logic -----
+  function updateSummary() {
+    const summaryDiv = document.getElementById('summaryPreview');
+    if (!summaryDiv) return;
+    const service = document.getElementById('serviceSelect')?.value || 'Not selected';
+    const stylist = document.getElementById('stylistSelect')?.value || 'Any';
+    const name = document.getElementById('clientName')?.value.trim() || 'Not provided';
+    const phone = document.getElementById('clientPhone')?.value.trim() || 'Not provided';
+    const date = document.getElementById('bookingDate')?.value || 'Not selected';
+    const time = selectedTime || 'Not selected';
+    summaryDiv.innerHTML = `<strong>✨ Booking Summary</strong><br><br>
+      <strong>Service:</strong> ${service}<br>
+      <strong>Stylist:</strong> ${stylist}<br>
+      <strong>Name:</strong> ${name}<br>
+      <strong>Phone:</strong> ${phone}<br>
+      <strong>Date:</strong> ${date}<br>
+      <strong>Time:</strong> ${time}<br><br>
+      <small>A confirmation will be sent to your WhatsApp.</small>`;
+  }
+
+  function showStep(step) {
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
+    const step3 = document.getElementById('step3');
+    if (step1) step1.classList.remove('active-step');
+    if (step2) step2.classList.remove('active-step');
+    if (step3) step3.classList.remove('active-step');
+    const target = document.getElementById(`step${step}`);
+    if (target) target.classList.add('active-step');
+
+    const lbl1 = document.getElementById('step1Label');
+    const lbl2 = document.getElementById('step2Label');
+    const lbl3 = document.getElementById('step3Label');
+    if (lbl1) lbl1.classList.remove('active');
+    if (lbl2) lbl2.classList.remove('active');
+    if (lbl3) lbl3.classList.remove('active');
+    const activeLabel = document.getElementById(`step${step}Label`);
+    if (activeLabel) activeLabel.classList.add('active');
+
+    if (step === 3) updateSummary();
+  }
+
+  window.nextStep = function(step) {
+    if (step === 2) {
+      const name = document.getElementById('clientName')?.value.trim();
+      if (!name) { alert('Please enter your name'); return; }
+      const phone = document.getElementById('clientPhone')?.value.trim();
+      if (!phone) { alert('Please enter your phone number'); return; }
+      const date = document.getElementById('bookingDate')?.value;
+      if (!date) { alert('Please select a date'); return; }
+      if (!selectedTime) { alert('Please select a time slot'); return; }
+    }
+    showStep(step);
+  };
+
+  function setupBooking() {
+    renderTimeSlots();
+    const confirmBtn = document.getElementById('confirmBookingBtn');
+    if (confirmBtn) {
+      confirmBtn.addEventListener('click', () => {
+        const name = document.getElementById('clientName')?.value.trim();
+        const phone = document.getElementById('clientPhone')?.value.trim();
+        const date = document.getElementById('bookingDate')?.value;
+        const service = document.getElementById('serviceSelect')?.value;
+        if (!name || !phone || !selectedTime || !date) {
+          alert('Please complete all booking details');
+          return;
+        }
+        alert(`✅ Appointment confirmed for ${name} at ${selectedTime} on ${date}!\nWe will contact you shortly on ${phone}.\n\nService: ${service}`);
+      });
+    }
+    const datePicker = document.getElementById('bookingDate');
+    if (datePicker) {
+      const today = new Date().toISOString().split('T')[0];
+      datePicker.min = today;
+    }
+  }
+
+  // ----- On load -----
+  window.addEventListener('load', () => {
+    hideLoader();
+    initSwiper();
+    setupBooking();
+    // ensure step1 visible
+    showStep(1);
+  });
+})();
+</script>
+</body>
+</html>
