@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>SDR Studio | Professional Family Salon — Hyderabad</title>
-  <!-- Google Fonts & simple Icons (Tabler Icons via CDN) -->
+  <title>SDR Studio | Luxury Family Salon — Hyderabad</title>
+  <!-- Google Fonts + Tabler Icons + Swiper JS for carousel -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icons.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap');
-
     * {
       margin: 0;
       padding: 0;
@@ -16,145 +16,154 @@
     }
 
     :root {
-      /* NEW WARM TERRACOTTA + PEACH GRADIENT (primary) */
       --gradient-primary: linear-gradient(135deg, #D97A5A 0%, #F2B88D 100%);
       --gradient-button: linear-gradient(120deg, #E85D4F 0%, #F7B05E 100%);
-      --gradient-subtle: linear-gradient(145deg, rgba(217,122,90,0.08) 0%, rgba(242,184,141,0.2) 100%);
-      
-      /* ACCENT COLOR (Teal – modern trustworthy contrast) */
       --teal: #2F9B87;
-      --teal-light: #3fb49e;
-      
-      /* GOLD is replaced / enhanced – we keep subtle warm metallic as secondary */
-      --warm-gold: #cb9e6b;
-      --warm-gold-light: #e6c594;
-      
-      /* NEUTRAL background & text – soft & warm */
-      --cream-warm: #FFF9F5;      /* instead of stark white */
-      --warm-bg-soft: #fdf5ed;    /* extra soft variation */
-      --dark-charcoal: #2B2826;   /* deep charcoal for text */
-      --muted-warm: #6B5B55;      /* warm gray for subtext */
-      --border-soft: rgba(217,122,90,0.2);   /* terracotta based border */
-      --border-light: rgba(107, 91, 85, 0.12);
-      
+      --teal-dark: #1e6b5c;
+      --cream-warm: #FFF9F5;
+      --dark-charcoal: #2B2826;
+      --muted-warm: #6B5B55;
+      --border-soft: rgba(217,122,90,0.2);
       --dark-bg: #1f1c1a;
-      --card-hover: #fff4ec;
+      --shadow-sm: 0 10px 30px -12px rgba(0,0,0,0.1);
+      --shadow-md: 0 20px 35px -12px rgba(0,0,0,0.15);
+      --transition: all 0.3s cubic-bezier(0.2, 0.95, 0.4, 1);
     }
 
     body {
-      background: var(--cream-warm);
       font-family: 'DM Sans', sans-serif;
-      color: var(--dark-charcoal);
-    }
-
-    .site {
-      max-width: 1440px;
-      margin: 0 auto;
       background: var(--cream-warm);
-      box-shadow: 0 0 30px rgba(0,0,0,0.02);
+      color: var(--dark-charcoal);
+      scroll-behavior: smooth;
     }
 
-    /* NAVIGATION */
+    /* Loading animation */
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--cream-warm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s;
+    }
+    .loader-spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(217,122,90,0.2);
+      border-top: 3px solid #D97A5A;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Smooth scroll */
+    html { scroll-behavior: smooth; }
+
+    /* Navigation premium */
     .nav {
-      background: var(--dark-charcoal);
-      padding: 0 2rem;
+      background: rgba(43,40,38,0.92);
+      backdrop-filter: blur(12px);
+      padding: 0 3rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 70px;
+      height: 80px;
       position: sticky;
       top: 0;
-      z-index: 100;
-      border-bottom: 1px solid rgba(217,122,90,0.25);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(242,184,141,0.2);
+      transition: var(--transition);
     }
     .logo {
       font-family: 'Playfair Display', serif;
-      font-size: 23px;
+      font-size: 26px;
       background: var(--gradient-primary);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      letter-spacing: 0.5px;
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: -0.3px;
     }
     .logo span {
       font-size: 10px;
-      display: block;
-      letter-spacing: 4px;
+      letter-spacing: 5px;
       color: rgba(242,184,141,0.7);
-      font-family: 'DM Sans', sans-serif;
       font-weight: 300;
-      margin-top: -3px;
-      background: none;
-      -webkit-background-clip: unset;
-      background-clip: unset;
-      color: rgba(242,184,141,0.7);
+      margin-top: -4px;
     }
-    .nav-links {
-      display: flex;
-      gap: 2.2rem;
-      list-style: none;
-    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a {
-      color: rgba(255,255,255,0.78);
+      color: rgba(255,255,255,0.85);
       text-decoration: none;
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 0.4px;
-      transition: all 0.2s;
+      font-size: 14px;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
     }
-    .nav-links a:hover {
-      color: #F2B88D;
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-primary);
+      transition: width 0.3s;
     }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: #F2B88D; }
     .nav-cta {
       background: var(--gradient-button);
       color: white;
       border: none;
-      padding: 8px 22px;
-      font-family: 'DM Sans', sans-serif;
+      padding: 10px 28px;
+      border-radius: 40px;
+      font-weight: 600;
       font-size: 13px;
-      font-weight: 500;
-      border-radius: 30px;
       cursor: pointer;
-      transition: transform 0.1s ease, box-shadow 0.2s;
-      box-shadow: 0 2px 8px rgba(232,93,79,0.2);
-    }
-    .nav-cta:hover {
-      transform: scale(0.98);
+      transition: var(--transition);
       box-shadow: 0 4px 12px rgba(232,93,79,0.3);
     }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(232,93,79,0.4); }
 
-    /* HERO SECTION */
+    /* Hero with video background concept (elegant image fallback) */
     .hero {
-      background: var(--dark-charcoal);
-      padding: 5rem 2rem 4rem;
-      text-align: center;
       position: relative;
+      min-height: 85vh;
+      background: linear-gradient(105deg, #1f1c1a 0%, #2b2724 100%);
+      display: flex;
+      align-items: center;
+      padding: 4rem 3rem;
       overflow: hidden;
     }
-    .hero::before {
-      content: '';
+    .hero-bg-pattern {
       position: absolute;
       top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: var(--gradient-primary);
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background: radial-gradient(circle at 70% 30%, rgba(217,122,90,0.15) 0%, transparent 70%);
+      pointer-events: none;
     }
+    .hero-content { max-width: 620px; position: relative; z-index: 2; }
     .hero-eyebrow {
-      font-size: 11px;
-      letter-spacing: 5px;
-      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 6px;
       color: #F2B88D;
-      margin-bottom: 1.5rem;
-      font-weight: 300;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
     }
     .hero-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(36px, 5vw, 66px);
+      font-size: clamp(42px, 6vw, 72px);
       color: white;
-      line-height: 1.15;
-      margin-bottom: 1.5rem;
+      line-height: 1.1;
+      margin-bottom: 1.8rem;
     }
     .hero-title em {
       background: var(--gradient-primary);
@@ -162,702 +171,460 @@
       -webkit-background-clip: text;
       color: transparent;
       font-style: italic;
-      font-weight: 600;
     }
     .hero-sub {
-      font-size: 15px;
-      color: rgba(255,255,255,0.6);
-      max-width: 500px;
-      margin: 0 auto 2.5rem;
+      font-size: 16px;
+      color: rgba(255,255,255,0.65);
       line-height: 1.7;
-      font-weight: 300;
+      margin-bottom: 2.5rem;
     }
-    .hero-actions {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary, .btn-outline {
+      padding: 14px 34px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
     }
     .btn-primary {
       background: var(--gradient-button);
       color: white;
-      border: none;
-      padding: 14px 34px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      border-radius: 40px;
-      cursor: pointer;
-      box-shadow: 0 6px 18px rgba(232,93,79,0.3);
-      transition: all 0.2s;
+      box-shadow: 0 8px 18px rgba(232,93,79,0.35);
     }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 24px rgba(232,93,79,0.35);
-    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(232,93,79,0.45); }
     .btn-outline {
       background: transparent;
-      color: #F2B88D;
       border: 1px solid #F2B88D;
-      padding: 13px 34px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 400;
-      border-radius: 40px;
-      cursor: pointer;
-      transition: all 0.2s;
+      color: #F2B88D;
     }
-    .btn-outline:hover {
-      background: rgba(242,184,141,0.1);
-      border-color: #D97A5A;
-      color: #ffcdac;
-    }
-    .hero-badges {
+    .btn-outline:hover { background: rgba(242,184,141,0.1); border-color: #D97A5A; }
+    .hero-stats {
       display: flex;
-      gap: 2.5rem;
-      justify-content: center;
-      margin-top: 3rem;
+      gap: 3rem;
+      margin-top: 3.5rem;
       padding-top: 2rem;
       border-top: 1px solid rgba(242,184,141,0.2);
     }
-    .badge {
-      text-align: center;
-    }
-    .badge-num {
+    .stat-item .stat-number {
       font-family: 'Playfair Display', serif;
-      font-size: 28px;
+      font-size: 32px;
       background: var(--gradient-primary);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
       font-weight: 700;
     }
-    .badge-lbl {
-      font-size: 11px;
-      color: rgba(255,255,255,0.45);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-top: 4px;
-    }
+    .stat-label { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 1.5px; }
 
-    /* SECTION COMMONS */
+    /* Section styling premium */
     .section {
-      padding: 5rem 2rem;
+      padding: 5rem 3rem;
     }
-    .section-alt {
-      background: var(--warm-bg-soft);
-    }
-    .section-dark {
-      background: var(--dark-bg);
+    .section-alt { background: #fffaf5; }
+    .section-dark { background: var(--dark-bg); }
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3rem;
     }
     .section-label {
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: 5px;
-      text-transform: uppercase;
       color: #D97A5A;
-      margin-bottom: 0.75rem;
-      font-weight: 500;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
     }
     .section-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(26px, 3.5vw, 38px);
+      font-size: clamp(28px, 4vw, 44px);
       color: var(--dark-charcoal);
-      margin-bottom: 0.5rem;
-      line-height: 1.2;
+      margin-bottom: 1rem;
     }
-    .section-title-light {
-      color: white;
-    }
-    .section-sub {
-      font-size: 14px;
-      color: var(--muted-warm);
-      line-height: 1.7;
-      max-width: 540px;
-      margin-bottom: 2.5rem;
-      font-weight: 400;
-    }
-    .section-header {
-      margin-bottom: 2.5rem;
-    }
+    .section-title-light { color: white; }
 
-    /* SERVICES GRID – modern border with gradient accent */
+    /* Service cards - luxury glassmorphism */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 1px;
-      background: var(--border-soft);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
     }
     .service-card {
       background: white;
-      padding: 2rem 1.5rem;
-      transition: all 0.25s ease;
-      border-bottom: 2px solid transparent;
+      border-radius: 28px;
+      padding: 2rem;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(217,122,90,0.08);
     }
     .service-card:hover {
-      background: var(--card-hover);
-      border-bottom: 2px solid #D97A5A;
-      transform: translateY(-2px);
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(217,122,90,0.25);
     }
     .service-icon {
-      font-size: 32px;
+      font-size: 40px;
       background: var(--gradient-primary);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      margin-bottom: 1rem;
-      display: inline-block;
+      margin-bottom: 1.2rem;
     }
     .service-name {
       font-family: 'Playfair Display', serif;
-      font-size: 18px;
+      font-size: 22px;
       font-weight: 600;
-      color: var(--dark-charcoal);
-      margin-bottom: 0.4rem;
-    }
-    .service-desc {
-      font-size: 12px;
-      color: var(--muted-warm);
-      line-height: 1.7;
+      margin-bottom: 0.5rem;
     }
     .service-price {
-      font-size: 13px;
-      font-weight: 600;
+      font-size: 18px;
+      font-weight: 700;
       color: var(--teal);
-      margin-top: 0.75rem;
-      letter-spacing: 0.3px;
+      margin-top: 1rem;
     }
+    .service-desc { color: var(--muted-warm); line-height: 1.6; }
 
-    /* BOOKING PANEL – teal & gradient touches */
-    .booking-panel {
+    /* Booking widget - advanced step form */
+    .booking-widget {
       background: white;
-      border-radius: 24px;
-      padding: 2.2rem;
-      max-width: 720px;
+      border-radius: 36px;
+      padding: 2rem;
+      max-width: 800px;
       margin: 0 auto;
-      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.05);
-      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-md);
     }
-    .booking-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.2rem;
-      margin-bottom: 1.5rem;
+    .step-indicator {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 1rem;
     }
-    .form-group label {
-      font-size: 11px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--teal);
-      font-weight: 500;
-      display: block;
-      margin-bottom: 6px;
+    .step {
+      font-size: 12px;
+      font-weight: 600;
+      color: #bbb;
+      transition: var(--transition);
     }
-    .form-group select, .form-group input {
+    .step.active { color: #D97A5A; }
+    .booking-step { display: none; animation: fade 0.3s; }
+    .booking-step.active-step { display: block; }
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.2rem; }
+    .form-group label { font-weight: 500; font-size: 12px; color: var(--teal); display: block; margin-bottom: 6px; }
+    .form-group input, .form-group select {
       width: 100%;
-      border: 1px solid var(--border-light);
-      border-radius: 14px;
-      padding: 11px 14px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      background: white;
+      padding: 12px 16px;
+      border-radius: 20px;
+      border: 1px solid #e2e0dd;
+      font-family: inherit;
       transition: 0.2s;
     }
-    .form-group select:focus, .form-group input:focus {
-      outline: none;
-      border-color: #D97A5A;
-      box-shadow: 0 0 0 2px rgba(217,122,90,0.2);
-    }
+    .form-group input:focus, .form-group select:focus { outline: none; border-color: #D97A5A; }
     .time-slots {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 10px;
+      margin: 15px 0;
     }
-    .slot {
-      border: 1px solid var(--border-light);
-      padding: 8px 16px;
-      font-size: 12px;
+    .slot-btn {
+      padding: 8px 18px;
       border-radius: 40px;
+      border: 1px solid #ddd;
       background: white;
       cursor: pointer;
-      font-weight: 400;
-      transition: all 0.2s;
+      transition: 0.2s;
     }
-    .slot:hover:not(.full) {
-      border-color: #D97A5A;
-      color: #D97A5A;
-    }
-    .slot.active {
+    .slot-btn.selected { background: var(--gradient-button); color: white; border: none; }
+    .btn-next, .btn-book-submit {
       background: var(--gradient-button);
-      border-color: #E85D4F;
-      color: white;
-      font-weight: 500;
-      box-shadow: 0 2px 8px rgba(232,93,79,0.2);
-    }
-    .slot.full {
-      opacity: 0.4;
-      cursor: not-allowed;
-      background: #f0ebe0;
-    }
-    .btn-book {
-      width: 100%;
-      background: var(--gradient-primary);
-      color: white;
       border: none;
-      padding: 14px;
-      font-weight: 600;
+      padding: 12px 28px;
       border-radius: 40px;
-      font-size: 14px;
-      letter-spacing: 0.8px;
+      color: white;
+      font-weight: 600;
       cursor: pointer;
-      margin-top: 1.5rem;
-      transition: all 0.2s;
-      box-shadow: 0 4px 12px rgba(217,122,90,0.3);
-    }
-    .btn-book:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.02);
-      box-shadow: 0 12px 22px rgba(217,122,90,0.25);
+      margin-top: 1rem;
     }
 
-    /* TEAM CARDS */
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 2rem;
-    }
+    /* Team carousel */
+    .team-swiper { padding: 1rem 0.5rem; }
     .team-card {
       text-align: center;
       background: white;
-      padding: 1.8rem 1rem;
-      border-radius: 28px;
-      transition: all 0.2s;
-      border: 1px solid rgba(217,122,90,0.12);
-    }
-    .team-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(217,122,90,0.4);
-      box-shadow: 0 15px 25px -12px rgba(0,0,0,0.05);
+      border-radius: 32px;
+      padding: 2rem 1rem;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
     }
     .team-avatar {
-      width: 84px;
-      height: 84px;
+      width: 110px;
+      height: 110px;
       margin: 0 auto 1rem;
-      background: var(--gradient-subtle);
+      background: linear-gradient(145deg, #fef3e8, #fae9db);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .team-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--dark-charcoal);
-    }
-    .team-role {
-      font-size: 11px;
-      color: var(--muted-warm);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-top: 3px;
-    }
-    .team-spec {
+    .team-avatar i { font-size: 54px; background: var(--gradient-primary); background-clip: text; -webkit-background-clip: text; color: transparent; }
+    .rating-badge {
+      background: #f5b04220;
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 40px;
       font-size: 12px;
-      color: var(--teal);
-      margin-top: 8px;
-      font-weight: 500;
+      margin-top: 12px;
     }
 
-    /* REVIEWS */
-    .reviews-grid {
+    /* Gallery section */
+    .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1.5rem;
     }
-    .review-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(242,184,141,0.2);
-      border-radius: 24px;
-      padding: 1.5rem;
-      backdrop-filter: blur(2px);
-      transition: 0.2s;
-    }
-    .review-card:hover {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(242,184,141,0.5);
-    }
-    .stars {
-      color: #F7B05E;
-      font-size: 14px;
-      letter-spacing: 2px;
-      margin-bottom: 1rem;
-    }
-    .review-text {
-      font-size: 13px;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.7;
-      font-style: italic;
-      margin-bottom: 1rem;
-    }
-    .review-author {
-      font-size: 12px;
-      color: #F2B88D;
-      font-weight: 500;
-    }
-
-    /* INFO STRIP – teal+gradient combo */
-    .info-strip {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 0;
-      background: #1f1c1a;
-      border-radius: 40px;
+    .gallery-item {
+      border-radius: 28px;
       overflow: hidden;
-      margin-top: 2rem;
-      border: 1px solid rgba(217,122,90,0.2);
-    }
-    .info-item {
-      padding: 1.8rem 1.5rem;
+      aspect-ratio: 1 / 1;
+      background: #ddd;
       display: flex;
       align-items: center;
-      gap: 1rem;
-      border-right: 1px solid rgba(242,184,141,0.15);
+      justify-content: center;
+      background: linear-gradient(135deg, #f3ede7, #e6dbd1);
+      transition: var(--transition);
+      cursor: pointer;
     }
-    .info-item:last-child {
-      border-right: none;
-    }
-    .info-icon {
-      font-size: 28px;
-      background: var(--gradient-primary);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-    .info-label {
-      font-size: 10px;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      color: rgba(242,184,141,0.6);
-      margin-bottom: 5px;
-    }
-    .info-val {
-      font-size: 14px;
-      color: white;
-      font-weight: 400;
+    .gallery-item i { font-size: 48px; color: #D97A5A; opacity: 0.6; }
+    .gallery-item:hover { transform: scale(0.98); }
+
+    /* Testimonials slider */
+    .testimonial-slide {
+      background: rgba(255,255,255,0.05);
+      border-radius: 28px;
+      padding: 2rem;
+      text-align: center;
+      backdrop-filter: blur(4px);
     }
 
-    /* DIVIDER & FOOTER */
-    .divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(217,122,90,0.4), transparent);
-      margin: 0 2rem;
-    }
-    .footer {
-      background: #100d09;
-      padding: 1.8rem 2rem;
+    /* Map & contact */
+    .contact-strip {
       display: flex;
-      align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 1rem;
-      border-top: 1px solid rgba(217,122,90,0.2);
-    }
-    .footer-copy {
-      font-size: 12px;
-      color: rgba(255,255,255,0.4);
-    }
-    .footer-links {
-      display: flex;
-      gap: 1.8rem;
-    }
-    .footer-links a {
-      font-size: 12px;
-      color: rgba(255,255,255,0.45);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover {
-      color: var(--teal);
+      background: #2b2826;
+      border-radius: 48px;
+      padding: 2rem;
+      margin-top: 2rem;
     }
 
-    /* responsive tweaks */
-    @media (max-width: 680px) {
-      .nav-links {
-        display: none;
-      }
-      .nav {
-        justify-content: space-between;
-      }
-      .booking-grid {
-        grid-template-columns: 1fr;
-      }
-      .info-strip {
-        grid-template-columns: 1fr;
-        border-radius: 28px;
-      }
-      .info-item {
-        border-right: none;
-        border-bottom: 1px solid rgba(242,184,141,0.1);
-      }
-      .section {
-        padding: 3rem 1.2rem;
-      }
-      .hero-actions {
-        flex-direction: column;
-        align-items: center;
-      }
+    /* Footer */
+    .footer {
+      background: #100d09;
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 780px) {
+      .nav-links { display: none; }
+      .section { padding: 3rem 1.5rem; }
+      .hero { padding: 2rem 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-<div class="site">
 
-  <!-- NAV -->
+<div class="loader" id="loader"><div class="loader-spinner"></div></div>
+
+<div class="site">
   <nav class="nav">
-    <div class="logo">SDR Studio <span>Professional Family Salon</span></div>
+    <div class="logo">SDR Studio <span>FAMILY SALON</span></div>
     <ul class="nav-links">
-      <li><a href="#">Services</a></li>
-      <li><a href="#">Our Team</a></li>
-      <li><a href="#">Gallery</a></li>
-      <li><a href="#">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#team">Experts</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#booking">Appointment</a></li>
     </ul>
-    <button class="nav-cta" onclick="sendPrompt('Show me booking options for SDR Studio salon')">Book Now</button>
+    <button class="nav-cta" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Book Now</button>
   </nav>
 
-  <!-- HERO -->
   <section class="hero">
-    <p class="hero-eyebrow">Hyderabad's Professional Family Salon</p>
-    <h1 class="hero-title">Where Style Meets <em>Family</em><br>Comfort</h1>
-    <p class="hero-sub">A premium unisex salon experience for every member of your family — from precision cuts to bridal transformations.</p>
-    <div class="hero-actions">
-      <button class="btn-primary" onclick="sendPrompt('I want to book an appointment at SDR Studio salon')">Book an Appointment</button>
-      <button class="btn-outline" onclick="sendPrompt('Show me all services and pricing at SDR Studio salon')">Explore Services</button>
-    </div>
-    <div class="hero-badges">
-      <div class="badge"><div class="badge-num">500+</div><div class="badge-lbl">Happy Clients</div></div>
-      <div class="badge"><div class="badge-num">12+</div><div class="badge-lbl">Expert Stylists</div></div>
-      <div class="badge"><div class="badge-num">5★</div><div class="badge-lbl">Google Rating</div></div>
-      <div class="badge"><div class="badge-num">8+</div><div class="badge-lbl">Years of Trust</div></div>
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Hyderabad's Finest</div>
+      <h1 class="hero-title">Where Style Meets <em>Family</em><br>Comfort</h1>
+      <p class="hero-sub">Premium unisex salon experience — precision cuts, bridal transformations, and wellness for every member. Rated 5★ by 500+ families.</p>
+      <div class="hero-buttons">
+        <button class="btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Secure Your Slot</button>
+        <button class="btn-outline" onclick="sendPrompt('Show services')">Explore Treatments</button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item"><div class="stat-number">12+</div><div class="stat-label">Master Stylists</div></div>
+        <div class="stat-item"><div class="stat-number">8+</div><div class="stat-label">Years Excellence</div></div>
+        <div class="stat-item"><div class="stat-number">5.0★</div><div class="stat-label">Google Rating</div></div>
+      </div>
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section class="section">
+  <section id="services" class="section">
     <div class="section-header">
-      <p class="section-label">What We Offer</p>
-      <h2 class="section-title">Services for the Whole Family</h2>
-      <p class="section-sub">From everyday grooming to special occasion transformations — everything under one roof.</p>
+      <div class="section-label">Luxury Services</div>
+      <h2 class="section-title">Tailored for the whole family</h2>
+      <p style="color: var(--muted-warm);">Bridal, grooming, kids — all under one elegant roof.</p>
     </div>
     <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon"><i class="ti ti-cut"></i></div>
-        <div class="service-name">Hair Styling</div>
-        <div class="service-desc">Precision cuts, blowouts, and styling for men, women & kids</div>
-        <div class="service-price">From ₹199</div>
+      <div class="service-card"><i class="ti ti-cut service-icon"></i><div class="service-name">Hair Styling</div><div class="service-desc">Men, women & kids precision cuts</div><div class="service-price">From ₹199</div></div>
+      <div class="service-card"><i class="ti ti-sparkles service-icon"></i><div class="service-name">Hair Treatments</div><div class="service-desc">Keratin, smoothening, rebonding</div><div class="service-price">From ₹999</div></div>
+      <div class="service-card"><i class="ti ti-wand service-icon"></i><div class="service-name">Bridal Package</div><div class="service-desc">Makeup + Mehendi + Pre-bridal</div><div class="service-price">From ₹4,999</div></div>
+      <div class="service-card"><i class="ti ti-heart service-icon"></i><div class="service-name">Facials & Skin</div><div class="service-desc">De-tan, glow & anti-aging</div><div class="service-price">From ₹399</div></div>
+      <div class="service-card"><i class="ti ti-hand-finger service-icon"></i><div class="service-name">Nail Studio</div><div class="service-desc">Gel, extensions, manicure</div><div class="service-price">From ₹299</div></div>
+      <div class="service-card"><i class="ti ti-user service-icon"></i><div class="service-name">Groom Packages</div><div class="service-desc">Beard styling & groom makeup</div><div class="service-price">From ₹599</div></div>
+    </div>
+  </section>
+
+  <!-- Advanced Booking Step Form -->
+  <section id="booking" class="section section-alt">
+    <div class="section-header">
+      <div class="section-label">Reserve your moment</div>
+      <h2 class="section-title">Smart Appointment</h2>
+    </div>
+    <div class="booking-widget">
+      <div class="step-indicator"><span class="step active" id="step1Label">1. Service</span><span class="step" id="step2Label">2. Details</span><span class="step" id="step3Label">3. Confirm</span></div>
+      <div id="step1" class="booking-step active-step">
+        <div class="form-group"><label>Select Service</label><select id="serviceSelect"><option>Hair Styling (₹199+)</option><option>Hair Treatment (₹999+)</option><option>Bridal Package (₹4,999+)</option><option>Facial & Skin (₹399+)</option><option>Nail Art (₹299+)</option><option>Groom Package (₹599+)</option></select></div>
+        <div class="form-group"><label>Preferred Stylist</label><select id="stylistSelect"><option>Any Expert</option><option>Divya S. (Bridal)</option><option>Ravi K. (Color)</option><option>Sneha R. (Skin)</option><option>Arjun M. (Grooming)</option></select></div>
+        <button class="btn-next" onclick="nextStep(2)">Continue →</button>
       </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="ti ti-sparkles"></i></div>
-        <div class="service-name">Hair Treatments</div>
-        <div class="service-desc">Rebonding, smoothening, keratin & deep conditioning</div>
-        <div class="service-price">From ₹999</div>
+      <div id="step2" class="booking-step">
+        <div class="form-row"><div class="form-group"><label>Full Name</label><input type="text" id="clientName" placeholder="Your name"></div><div class="form-group"><label>Phone</label><input type="tel" id="clientPhone" placeholder="+91"></div></div>
+        <div class="form-row"><div class="form-group"><label>Date</label><input type="date" id="bookingDate"></div><div class="form-group"><label>Time Slot</label><div class="time-slots" id="timeSlotsContainer"></div></div></div>
+        <button class="btn-next" onclick="nextStep(3)">Review →</button>
+        <button class="btn-outline" style="margin-left:1rem;" onclick="nextStep(1)">Back</button>
       </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="ti ti-wand"></i></div>
-        <div class="service-name">Bridal Packages</div>
-        <div class="service-desc">Complete bridal makeup, mehendi & pre-bridal care</div>
-        <div class="service-price">From ₹4,999</div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="ti ti-heart"></i></div>
-        <div class="service-name">Facials & Skin</div>
-        <div class="service-desc">Advanced facials, clean-ups, de-tan & glow treatments</div>
-        <div class="service-price">From ₹399</div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="ti ti-hand-finger"></i></div>
-        <div class="service-name">Nail Art</div>
-        <div class="service-desc">Manicure, pedicure, gel & nail extensions</div>
-        <div class="service-price">From ₹299</div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="ti ti-user"></i></div>
-        <div class="service-name">Groom Packages</div>
-        <div class="service-desc">Haircut, beard styling, cleanup & groom makeup</div>
-        <div class="service-price">From ₹599</div>
+      <div id="step3" class="booking-step">
+        <div style="background:#fef6ef; padding:1.5rem; border-radius:24px;" id="summaryPreview"></div>
+        <button class="btn-book-submit" id="confirmBookingBtn">Confirm Booking</button>
+        <button class="btn-outline" style="margin-left:1rem;" onclick="nextStep(2)">Edit</button>
       </div>
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <!-- BOOKING -->
-  <section class="section section-alt">
-    <div class="section-header">
-      <p class="section-label">Reserve Your Slot</p>
-      <h2 class="section-title">Book an Appointment</h2>
-      <p class="section-sub">Choose your service and preferred time — we'll be ready for you.</p>
-    </div>
-    <div class="booking-panel">
-      <div class="booking-grid">
-        <div class="form-group">
-          <label>Service</label>
-          <select>
-            <option>Hair Cut & Styling</option>
-            <option>Hair Treatment</option>
-            <option>Bridal Package</option>
-            <option>Facial & Skin</option>
-            <option>Nail Art</option>
-            <option>Groom Package</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Stylist (optional)</label>
-          <select>
-            <option>Any Available</option>
-            <option>Divya — Bridal Expert</option>
-            <option>Ravi — Color Specialist</option>
-            <option>Sneha — Skin Therapist</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Date</label>
-          <input type="date" value="2026-06-15">
-        </div>
-        <div class="form-group">
-          <label>Your Name</label>
-          <input type="text" placeholder="Full name">
-        </div>
+  <!-- Team Carousel -->
+  <section id="team" class="section">
+    <div class="section-header"><div class="section-label">Artisans</div><h2 class="section-title">Meet The Masters</h2></div>
+    <div class="swiper team-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><div class="team-card"><div class="team-avatar"><i class="ti ti-user-circle"></i></div><div class="team-name">Divya S.</div><div class="team-role">Senior Bridal Artist</div><div class="rating-badge">⭐ 8+ years</div></div></div>
+        <div class="swiper-slide"><div class="team-card"><div class="team-avatar"><i class="ti ti-user-circle"></i></div><div class="team-name">Ravi K.</div><div class="team-role">Color Expert</div><div class="rating-badge">🎨 Balayage Pro</div></div></div>
+        <div class="swiper-slide"><div class="team-card"><div class="team-avatar"><i class="ti ti-user-circle"></i></div><div class="team-name">Sneha R.</div><div class="team-role">Skin Therapist</div><div class="rating-badge">✨ Advanced Facials</div></div></div>
+        <div class="swiper-slide"><div class="team-card"><div class="team-avatar"><i class="ti ti-user-circle"></i></div><div class="team-name">Arjun M.</div><div class="team-role">Grooming Expert</div><div class="rating-badge">🧔 Beard Specialist</div></div></div>
       </div>
-      <div class="form-group">
-        <label>Preferred Time</label>
-        <div class="time-slots">
-          <button class="slot full">9:00 AM</button>
-          <button class="slot">10:00 AM</button>
-          <button class="slot active">11:00 AM</button>
-          <button class="slot">12:00 PM</button>
-          <button class="slot full">1:00 PM</button>
-          <button class="slot">2:00 PM</button>
-          <button class="slot">3:00 PM</button>
-          <button class="slot">4:00 PM</button>
-          <button class="slot">5:00 PM</button>
-          <button class="slot full">6:00 PM</button>
-        </div>
-      </div>
-      <button class="btn-book">Confirm Appointment</button>
+      <div class="swiper-pagination"></div>
     </div>
   </section>
 
-  <!-- TEAM -->
-  <section class="section">
-    <div class="section-header">
-      <p class="section-label">Meet the Experts</p>
-      <h2 class="section-title">Our Skilled Professionals</h2>
-      <p class="section-sub">Trained, certified, and passionate about making you look your absolute best.</p>
-    </div>
-    <div class="team-grid">
-      <div class="team-card">
-        <div class="team-avatar"><i class="ti ti-user-circle" style="font-size: 42px; background: var(--gradient-primary); background-clip: text; -webkit-background-clip: text; color: transparent;"></i></div>
-        <div class="team-name">Divya S.</div>
-        <div class="team-role">Senior Stylist</div>
-        <div class="team-spec">Bridal · Color</div>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar"><i class="ti ti-user-circle" style="font-size: 42px; background: var(--gradient-primary); background-clip: text; -webkit-background-clip: text; color: transparent;"></i></div>
-        <div class="team-name">Ravi K.</div>
-        <div class="team-role">Color Expert</div>
-        <div class="team-spec">Highlights · Balayage</div>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar"><i class="ti ti-user-circle" style="font-size: 42px; background: var(--gradient-primary); background-clip: text; -webkit-background-clip: text; color: transparent;"></i></div>
-        <div class="team-name">Sneha R.</div>
-        <div class="team-role">Skin Therapist</div>
-        <div class="team-spec">Facials · Waxing</div>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar"><i class="ti ti-user-circle" style="font-size: 42px; background: var(--gradient-primary); background-clip: text; -webkit-background-clip: text; color: transparent;"></i></div>
-        <div class="team-name">Arjun M.</div>
-        <div class="team-role">Groom Specialist</div>
-        <div class="team-spec">Beard · Men's Cuts</div>
-      </div>
+  <!-- Gallery placeholder -->
+  <section id="gallery" class="section section-alt">
+    <div class="section-header"><div class="section-label">Moments</div><h2 class="section-title">Our Signature Work</h2></div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><i class="ti ti-photo"></i></div>
+      <div class="gallery-item"><i class="ti ti-photo"></i></div>
+      <div class="gallery-item"><i class="ti ti-photo"></i></div>
+      <div class="gallery-item"><i class="ti ti-photo"></i></div>
     </div>
   </section>
 
-  <!-- REVIEWS (dark) -->
-  <section class="section section-dark">
-    <div class="section-header">
-      <p class="section-label" style="color: #F2B88D;">Client Love</p>
-      <h2 class="section-title section-title-light">What Our Guests Say</h2>
+  <!-- Testimonial Slider -->
+  <section class="section-dark" style="padding: 4rem 3rem;">
+    <div class="section-header"><div class="section-label">Client Love</div><h2 class="section-title-light">Stories of Glamour</h2></div>
+    <div class="swiper testimonial-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><div class="testimonial-slide"><div class="stars" style="color:#F7B05E;">★★★★★</div><p style="color:#ddd;">"Dream bridal look! Divya understood everything."</p><h4 style="color:#F2B88D; margin-top:1rem;">— Meena R.</h4></div></div>
+        <div class="swiper-slide"><div class="testimonial-slide"><div class="stars" style="color:#F7B05E;">★★★★★</div><p style="color:#ddd;">"Best family salon in Bachupally. Highly recommend."</p><h4 style="color:#F2B88D;">— Shalini K.</h4></div></div>
+        <div class="swiper-slide"><div class="testimonial-slide"><div class="stars" style="color:#F7B05E;">★★★★★</div><p style="color:#ddd;">"Amazing service and hygiene. My kids love it!"</p><h4 style="color:#F2B88D;">— Priya T.</h4></div></div>
+      </div>
+      <div class="swiper-pagination"></div>
     </div>
-    <div class="reviews-grid">
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p class="review-text">"Amazing experience for my daughter's birthday look. The team was so patient and the result was stunning!"</p>
-        <div class="review-author">— Priya T.</div>
-      </div>
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p class="review-text">"Best bridal makeup in the area. Divya understood my vision perfectly and the hair held all day long."</p>
-        <div class="review-author">— Meena R.</div>
-      </div>
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p class="review-text">"Great family salon — my husband, kids, and I all go here. Clean, professional, and always on time."</p>
-        <div class="review-author">— Shalini K.</div>
-      </div>
-    </div>
-    <div class="info-strip" style="margin-top: 2.5rem;">
-      <div class="info-item">
-        <i class="ti ti-map-pin info-icon"></i>
-        <div>
-          <div class="info-label">Location</div>
-          <div class="info-val">Bachupally, Hyderabad — 500090</div>
-        </div>
-      </div>
-      <div class="info-item">
-        <i class="ti ti-clock info-icon"></i>
-        <div>
-          <div class="info-label">Hours</div>
-          <div class="info-val">9:00 AM – 8:00 PM, All Days</div>
-        </div>
-      </div>
-      <div class="info-item">
-        <i class="ti ti-phone info-icon"></i>
-        <div>
-          <div class="info-label">Call / WhatsApp</div>
-          <div class="info-val">+91 98765 XXXXX</div>
-        </div>
-      </div>
+    <div class="contact-strip" style="margin-top: 3rem;">
+      <div><i class="ti ti-map-pin" style="color:#F2B88D;"></i> <span style="color:white;">Bachupally, Hyderabad - 500090</span></div>
+      <div><i class="ti ti-clock" style="color:#F2B88D;"></i> <span style="color:white;">9AM – 8PM (All Days)</span></div>
+      <div><i class="ti ti-phone" style="color:#F2B88D;"></i> <span style="color:white;">+91 98765 XXXXX</span></div>
     </div>
   </section>
 
   <footer class="footer">
-    <div class="footer-copy">© 2026 SDR Studio Professional Family Salon · Hyderabad</div>
-    <div class="footer-links">
-      <a href="#">Privacy</a>
-      <a href="#">Instagram</a>
-      <a href="#">WhatsApp</a>
-      <a href="#">Google Maps</a>
-    </div>
+    <div style="color: #aaa;">© 2026 SDR Studio — Luxury Family Salon</div>
+    <div style="display: flex; gap: 1.5rem;"><a href="#" style="color:#aaa;">Instagram</a><a href="#" style="color:#aaa;">WhatsApp</a><a href="#" style="color:#aaa;">Book Now</a></div>
   </footer>
 </div>
 
 <script>
-  document.querySelectorAll('.slot:not(.full)').forEach(slot => {
-    slot.addEventListener('click', () => {
-      document.querySelectorAll('.slot').forEach(s => s.classList.remove('active'));
-      slot.classList.add('active');
+  // Remove loader
+  window.addEventListener('load', () => { document.getElementById('loader')?.remove(); });
+  // Time slots dynamic
+  const slotsContainer = document.getElementById('timeSlotsContainer');
+  const times = ['9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM'];
+  let selectedTime = '';
+  function renderTimeSlots() {
+    if(!slotsContainer) return;
+    slotsContainer.innerHTML = '';
+    times.forEach(t => {
+      const btn = document.createElement('button');
+      btn.textContent = t;
+      btn.classList.add('slot-btn');
+      btn.onclick = () => {
+        document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        selectedTime = t;
+      };
+      slotsContainer.appendChild(btn);
     });
+  }
+  renderTimeSlots();
+
+  let currentStep = 1;
+  function nextStep(step) {
+    if(step === 2 && !selectedTime && document.getElementById('bookingDate').value === '') { alert('Please select date & time'); return; }
+    if(step === 2 && !document.getElementById('clientName').value) { alert('Enter your name'); return; }
+    document.getElementById('step1').classList.remove('active-step');
+    document.getElementById('step2').classList.remove('active-step');
+    document.getElementById('step3').classList.remove('active-step');
+    document.getElementById(`step${step}`).classList.add('active-step');
+    document.getElementById('step1Label').classList.remove('active');
+    document.getElementById('step2Label').classList.remove('active');
+    document.getElementById('step3Label').classList.remove('active');
+    document.getElementById(`step${step}Label`).classList.add('active');
+    currentStep = step;
+    if(step === 3) {
+      const service = document.getElementById('serviceSelect')?.options[document.getElementById('serviceSelect').selectedIndex]?.text || '';
+      const stylist = document.getElementById('stylistSelect')?.value || '';
+      const name = document.getElementById('clientName')?.value || '';
+      const date = document.getElementById('bookingDate')?.value || 'Not set';
+      const phone = document.getElementById('clientPhone')?.value || '';
+      document.getElementById('summaryPreview').innerHTML = `<p><strong>${name}</strong> | ${phone}</p><p>✨ ${service}</p><p>👤 ${stylist}</p><p>📅 ${date} at ${selectedTime}</p>`;
+    }
+  }
+
+  document.getElementById('confirmBookingBtn')?.addEventListener('click', () => {
+    alert('✨ Appointment booked! We will send confirmation on WhatsApp.');
+    // reset steps
+    nextStep(1);
+    document.getElementById('clientName').value = '';
+    document.getElementById('clientPhone').value = '';
+    selectedTime = '';
+    renderTimeSlots();
   });
-  // dummy sendPrompt for any external callback (optional)
-  window.sendPrompt = function(msg) {
-    console.log("[demo] prompt trigger: " + msg);
-    alert("✨ " + msg + "\n(This is a demo. Connect your backend or chatbot here.)");
-  };
+
+  // Initialize Swiper carousels
+  new Swiper('.team-swiper', { slidesPerView: 1, spaceBetween: 20, breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }, pagination: { el: '.swiper-pagination', clickable: true } });
+  new Swiper('.testimonial-swiper', { slidesPerView: 1, autoplay: { delay: 4000 }, loop: true, pagination: { el: '.swiper-pagination', clickable: true } });
+  window.sendPrompt = (msg) => { alert(`📞 ${msg} \nOur concierge will reach out shortly.`); };
+  // set default date
+  const today = new Date().toISOString().split('T')[0];
+  if(document.getElementById('bookingDate')) document.getElementById('bookingDate').value = today;
 </script>
 </body>
 </html>
